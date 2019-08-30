@@ -22,7 +22,7 @@ public class Utilizador {
 	
 	private String imagem;
 
-	public Utilizador(Integer id, String email, String password, String nome, String lingua, String imagem) {
+	public Utilizador(String email, String password, String nome, String lingua, String imagem) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -35,7 +35,7 @@ public class Utilizador {
 	public Utilizador() {
 		super();
 	}
-
+	
 	public Integer getId() {
 		return id;
 	}
