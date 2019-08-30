@@ -1,7 +1,6 @@
 package com.tqs.vloja.requests;
 
 import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -75,7 +74,7 @@ public class AuthenticationRequests {
 		Optional<Utilizador> utilizadorDB = utilizadorRepository.findById(userId);
 		try {
 			utilizadorDB.get();
-			apiResponse = utils.setMessage(false, 1003, "Sessão terminada", utilizadorDB);
+			apiResponse = utils.setMessage(false, 1003, "Sessão terminada", null);
 		} catch (NoSuchElementException e) {
 			apiResponse = utils.setMessage(true, 3003, "Utilizador não existe", null);
 		}
