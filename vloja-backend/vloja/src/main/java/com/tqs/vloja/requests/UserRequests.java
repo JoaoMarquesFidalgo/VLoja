@@ -2,11 +2,11 @@ package com.tqs.vloja.requests;
 
 import java.sql.SQLException;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -15,16 +15,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tqs.vloja.classes.ApiResponse;
-import com.tqs.vloja.classes.Utilizador;
-import com.tqs.vloja.repositories.UtilizadorRepository;
+import com.tqs.vloja.classes.User;
+import com.tqs.vloja.repositories.UserRepository;
 import com.tqs.vloja.utils.Utils;
 
 @Controller
+@CrossOrigin
 @RequestMapping(path="/api")
-public class UtilizadorRequests {
+public class UserRequests {
 	
 	@Autowired
-	private UtilizadorRepository utilizadorRepository;
+	private UserRepository userRepository;
 	
 	ApiResponse apiResponse = new ApiResponse();
 	Utils utils = new Utils();
@@ -34,14 +35,14 @@ public class UtilizadorRequests {
 	 * checks if there are any records, if so, returns a list of users, otherwise, returns an error
 	 */
 	
-	@GetMapping(path="/getUser")
+	@GetMapping(path="/user")
 	public @ResponseBody ApiResponse getAllUsers() throws SQLException {
-		Iterable<Utilizador> utilizadores = utilizadorRepository.findAll();
-		if (utilizadores.iterator().hasNext())
+		Iterable<User> users = userRepository.findAll();
+		if (users.iterator().hasNext())
 		{
-			apiResponse = utils.setMessage(false, 1000, "Consulta realizada com sucesso.", utilizadores);
+			apiResponse = utils.setMessage(false, 1000, "Users returned with sucess", users);
 		} else {
-			apiResponse = utils.setMessage(true, 2000, "Não há registos a devolver.", null);
+			apiResponse = utils.setMessage(true, 2000, "No data to return", null);
 		}
 		return this.apiResponse;
 	}
@@ -53,11 +54,10 @@ public class UtilizadorRequests {
 	@GetMapping(path="/user/{userId}") 
 	public @ResponseBody ApiResponse getUserById(@PathVariable Integer userId) throws SQLException {
 		try {
-			Utilizador utilizadorDB = utilizadorRepository.findById(userId).get();
-			apiResponse = utils.setMessage(false, 1004, "Utilizador retornado com sucesso", 
-					utilizadorDB);
+			User userDB = userRepository.findById(userId).get();
+			apiResponse = utils.setMessage(false, 1004, "User returned with sucess", userDB);
 		} catch (NoSuchElementException e) {
-			apiResponse = utils.setMessage(true, 2004, "Utilizador não existe", null);
+			apiResponse = utils.setMessage(true, 2004, "User does not exist", null);
 		}
 		return apiResponse;
 	}
@@ -70,20 +70,20 @@ public class UtilizadorRequests {
 	
 	@PutMapping(path="/user/{userId}") 
 	public @ResponseBody ApiResponse updateUser(@PathVariable Integer userId, 
-			@RequestBody(required = false) Utilizador utilizador) throws SQLException, 
+			@RequestBody(required = false) User user) throws SQLException, 
 			IllegalArgumentException {
 		try {
-			Utilizador utilizadorDB = utilizadorRepository.findById(userId).get();
-			utilizadorDB.setEmail(utilizador.getEmail());
-			utilizadorDB.setPassword(utilizador.getPassword());
-			utilizadorDB.setNome(utilizador.getNome());
-			utilizadorDB.setLingua(utilizador.getLingua());
-			utilizadorDB.setImagem(utilizador.getImagem());
-			utilizadorRepository.save(utilizadorDB);
-			apiResponse = utils.setMessage(false, 1005, "Utilizador atualizado com sucesso", 
-					utilizadorDB);
+			User userDB = userRepository.findById(userId).get();
+			userDB.setEmail(user.getEmail());
+			userDB.setPassword(user.getPassword());
+			userDB.setName(user.getName());
+			userDB.setLanguage(user.getLanguage());
+			userDB.setImage(user.getImage());
+			userRepository.save(userDB);
+			apiResponse = utils.setMessage(false, 1005, "User updated with sucess", 
+					userDB);
 		} catch (NoSuchElementException e) {
-			apiResponse = utils.setMessage(true, 2005, "Utilizador não existe", null);
+			apiResponse = utils.setMessage(true, 2005, "User does not exist", null);
 		} catch (DataIntegrityViolationException ex) {
 	    	apiResponse = utils.setMessage(true, 2006, ex.getMessage(), null);
 	    }
