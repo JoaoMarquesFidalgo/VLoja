@@ -2,49 +2,67 @@ package com.tqs.vloja.classes;
 
 public class ApiResponse {
 	
-	private Boolean erro;
-	private Integer codigo;
-	private String descricao;
-	private Object dados;
-	public ApiResponse(Boolean erro, Integer codigo, String descricao, Object dados) {
+	/*
+	 * Body of a normal response from the server, fields:
+	 * Error: returns a boolean that informs the front-end if the request was successfully made
+	 * Code: returns an integer that indicates the type of error, usefull to treat errors
+	 * Description: a description of the response to the request
+	 * Data: the body of the response to the request made, when there is no error
+	 */
+	
+	private Boolean error;
+	private Integer code;
+	private String description;
+	private Object data;
+	
+	public ApiResponse(Boolean error, Integer code, String description, Object data) {
 		super();
-		this.erro = erro;
-		this.codigo = codigo;
-		this.descricao = descricao;
-		this.dados = dados;
+		this.error = error;
+		this.code = code;
+		this.description = description;
+		this.data = data;
 	}
-	public ApiResponse(Boolean erro, Integer codigo, String descricao) {
+	
+	public ApiResponse(Boolean error, Integer code, String description) {
 		super();
-		this.erro = erro;
-		this.codigo = codigo;
-		this.descricao = descricao;
+		this.error = error;
+		this.code = code;
+		this.description = description;
 	}
+	
 	public ApiResponse() {
 		super();
 	}
-	public Boolean getErro() {
-		return erro;
-	}
-	public void setErro(Boolean erro) {
-		this.erro = erro;
-	}
-	public Integer getCodigo() {
-		return codigo;
-	}
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
-	}
-	public String getDescricao() {
-		return descricao;
-	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-	public Object getDados() {
-		return dados;
-	}
-	public void setDados(Object dados) {
-		this.dados = dados;
+	
+	public Boolean getError() {
+		return error;
 	}
 	
+	public void setError(Boolean error) {
+		this.error = error;
+	}
+	
+	public Integer getCode() {
+		return code;
+	}
+	
+	public void setCode(Integer code) {
+		this.code = code;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	public Object getData() {
+		return data;
+	}
+	
+	public void setData(Object data) {
+		this.data = data;
+	}
 }
