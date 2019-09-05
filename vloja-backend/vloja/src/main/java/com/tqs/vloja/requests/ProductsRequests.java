@@ -2,10 +2,13 @@ package com.tqs.vloja.requests;
 
 import java.sql.SQLException;
 import java.util.NoSuchElementException;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Paths;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,14 +17,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.http.MediaType;
 
 import com.tqs.vloja.classes.ApiResponse;
 import com.tqs.vloja.classes.Product;
 import com.tqs.vloja.repositories.ProductRepository;
 import com.tqs.vloja.utils.Utils;
 
-@Controller
+@RestController
 @CrossOrigin
 @RequestMapping(path="/api")
 public class ProductsRequests {
@@ -58,12 +65,34 @@ public class ProductsRequests {
 		try {
 			Product productDB = productRepository.save(product);
 			apiResponse = utils.setMessage(false, 1101, "Product saved with sucess", productDB);
-	    }
-	    catch (DataIntegrityViolationException e) {
+	    } catch (DataIntegrityViolationException e) {
 	    	apiResponse = utils.setMessage(true, 2101, e.getMessage(), null);
 	    }
 		return apiResponse;
 	}
+	
+	/*
+	 * Function to upload an image of a product
+	 */
+	
+	@PostMapping(path="/productImage", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, 
+			produces = MediaType.APPLICATION_JSON_VALUE) 
+	public @ResponseBody ApiResponse addProductImage(@RequestParam("file") MultipartFile file) 
+			throws SQLException, IOException {
+		try {
+			String url = Paths.get("../").toAbsolutePath().normalize().toString() + "\\images\\"
+					+ System.currentTimeMillis() + file.getOriginalFilename();
+			File convertFile = new File(url);
+			FileOutputStream fou = new FileOutputStream(convertFile);
+			fou.write(file.getBytes());
+			fou.close();
+			apiResponse = utils.setMessage(false, 1105, "Product image saved with sucess", url);
+	    } catch (DataIntegrityViolationException e) {
+	    	apiResponse = utils.setMessage(true, 2110, e.getMessage(), null);
+	    }
+		return apiResponse;
+	}
+	
 	/*
 	 * Function to return one product
 	 */
