@@ -1,9 +1,11 @@
 package com.tqs.vloja.requests;
 
+import java.awt.Desktop;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Paths;
@@ -13,12 +15,12 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+import org.springframework.web.bind.annotation.RestController;
 
 import com.tqs.vloja.classes.ApiResponse;
 import com.tqs.vloja.utils.Utils;
 
-@Controller
+@RestController
 @CrossOrigin
 @RequestMapping(path="/api")
 public class JsonRequests {
@@ -50,5 +52,19 @@ public class JsonRequests {
 		apiResponse = utils.setMessage(false, 1701, "File returned with success", jsonData);
 	    
 		return apiResponse;
+	}
+	
+	@GetMapping(path="/start") 
+	public void start() throws IOException, URISyntaxException
+	{
+		System.out.println(Paths.get("../../vloja-html/index.html").toAbsolutePath().normalize());
+		/*
+		URI res = Paths.get("../../vloja-html/index.html").toAbsolutePath().normalize().toUri();
+		File htmlFile = Paths.get(res).toFile();
+        Desktop.getDesktop().browse(htmlFile.toURI());
+        */
+		File htmlFile = Paths.get("../../vloja-html/index.html").toAbsolutePath().normalize().toFile();
+        Desktop.getDesktop().browse(htmlFile.toURI());
+        
 	}
 }

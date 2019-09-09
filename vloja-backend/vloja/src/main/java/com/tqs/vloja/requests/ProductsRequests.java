@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Paths;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.http.MediaType;
 
@@ -81,9 +83,16 @@ public class ProductsRequests {
 	public @ResponseBody ApiResponse addProductImage(@RequestParam("file") MultipartFile file) 
 			throws SQLException, IOException {
 		try {
+			String fileExtension = FilenameUtils.getExtension(file.getOriginalFilename());
+			if (fileExtension != "jpg" || fileExtension != "JPG" || fileExtension != "png" || 
+					fileExtension != "PNG" || fileExtension != "GIF" || fileExtension != "gif") {
+				apiResponse = utils.setMessage(true, 2111, "Only jpg, png or gif files can be "
+						+ "uploaded", null);
+				return apiResponse;
+			}
 			String fileName = System.currentTimeMillis() + file.getOriginalFilename();
-			String url = Paths.get("./src\\main\\resources\\images").toAbsolutePath().normalize().toString()
-					+ "\\" + fileName;
+			String url = Paths.get("./src\\main\\resources\\images").toAbsolutePath().normalize()
+					.toString() + "\\" + fileName;
 			File convertFile = new File(url);
 			FileOutputStream fou = new FileOutputStream(convertFile);
 			fou.write(file.getBytes());
@@ -91,6 +100,8 @@ public class ProductsRequests {
 			apiResponse = utils.setMessage(false, 1105, "Product image saved with sucess", fileName);
 	    } catch (DataIntegrityViolationException e) {
 	    	apiResponse = utils.setMessage(true, 2110, e.getMessage(), null);
+	    } catch (MaxUploadSizeExceededException e) {
+	    	apiResponse = utils.setMessage(true, 2111, "The upload limit is 4MB", null);
 	    }
 		return apiResponse;
 	}
