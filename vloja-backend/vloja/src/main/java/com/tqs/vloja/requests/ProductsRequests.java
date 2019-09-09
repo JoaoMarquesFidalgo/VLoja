@@ -2,6 +2,7 @@ package com.tqs.vloja.requests;
 
 import java.sql.SQLException;
 import java.util.NoSuchElementException;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -80,13 +81,14 @@ public class ProductsRequests {
 	public @ResponseBody ApiResponse addProductImage(@RequestParam("file") MultipartFile file) 
 			throws SQLException, IOException {
 		try {
-			String url = Paths.get("../").toAbsolutePath().normalize().toString() + "\\images\\"
-					+ System.currentTimeMillis() + file.getOriginalFilename();
+			String fileName = System.currentTimeMillis() + file.getOriginalFilename();
+			String url = Paths.get("./src\\main\\resources\\images").toAbsolutePath().normalize().toString()
+					+ "\\" + fileName;
 			File convertFile = new File(url);
 			FileOutputStream fou = new FileOutputStream(convertFile);
 			fou.write(file.getBytes());
 			fou.close();
-			apiResponse = utils.setMessage(false, 1105, "Product image saved with sucess", url);
+			apiResponse = utils.setMessage(false, 1105, "Product image saved with sucess", fileName);
 	    } catch (DataIntegrityViolationException e) {
 	    	apiResponse = utils.setMessage(true, 2110, e.getMessage(), null);
 	    }

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>VLoja - TQS - João Fidalgo</title>
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+
+    <!-- Slick -->
+    <link type="text/css" rel="stylesheet" href="css/slick.css" />
+    <link type="text/css" rel="stylesheet" href="css/slick-theme.css" />
+
+    <!-- nouislider -->
+    <link type="text/css" rel="stylesheet" href="css/nouislider.min.css" />
+
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+
+    <link type="text/css" rel="stylesheet" href="css/custom.css" />
+
+    <link type="text/css" rel="stylesheet" href="css/form.css" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <!-- MAIN HEADER -->
+        <div id="header">
+            <!-- container -->
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+                    <!-- LOGO -->
+                    <div class="col-md-3">
+                        <div class="header-logo">
+                            <a href="./index.html" class="logo">
+                                <img src="./img-custom/logo.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <!-- /LOGO -->
+
+                    <!-- SPACE -->
+                    <div class="col-md-6 clearfix"></div>
+                    <!-- /SPACE -->
+
+                    <!-- ACCOUNT -->
+                    <div class="col-md-3 clearfix">
+                        <div class="header-ctn">
+                            <!-- Whishlist -->
+                            <div>
+                                <a href="whishlist.html" style="width: 100px !important">
+                                    <i class="fa fa-heart-o"></i>
+                                    <span>Your Whishlists</span>
+                                </a>
+                            </div>
+                            <!-- /Whishlist -->
+
+                            <!-- Manage account -->
+                            <div class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                    <i class="fa fa-cog"></i>
+                                    <span>Account</span>
+                                </a>
+                                <div class="cart-dropdown dropdown-menu-custom">
+                                    <ul>
+                                        <li class="user-not-logged"><span><a href="./login.html">Login</a></span></li>
+                                        <li class="user-logged"><span><a href="./account.html">See Details</a></span></li>
+                                        <li><br></li>
+                                        <li class="user-not-logged"><a href="./register.html"><span>Register</a></span></li>
+                                        <li class="user-logged logout"><span><a href="#">Logout</a></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- /Manage account -->
+                        </div>
+                    </div>
+                    <!-- /ACCOUNT -->
+                </div>
+                <!-- row -->
+            </div>
+            <!-- container -->
+        </div>
+        <!-- /MAIN HEADER -->
+    </header>
+    <!-- /HEADER -->
+
+    <!-- NAVIGATION -->
+    <nav id="navigation">
+        <!-- container -->
+        <div class="container">
+            <!-- responsive-nav -->
+            <div id="responsive-nav">
+                <!-- NAV -->
+                <ul class="main-nav nav navbar-nav">
+                    <li><a href="./index.html">Products</a></li>
+                    <li><a href="whishlist.html">Whishlists</a></li>
+                    <li><a href="#">Favorites</a></li>
+                </ul>
+                <!-- /NAV -->
+            </div>
+            <!-- /responsive-nav -->
+        </div>
+        <!-- /container -->
+    </nav>
+    <!-- /NAVIGATION -->
+
+    <!-- BREADCRUMB -->
+    <div id="breadcrumb" class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="breadcrumb-header">Login</h3>
+                    <ul class="breadcrumb-tree">
+                        <li><a href="./index.html">Home</a></li>
+                        <li class="active">Login</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /BREADCRUMB -->
+
+    <!-- SECTION -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="feedback">
+                    <div class="alert alert-success success-account" role="alert"></div>
+                    <div class="alert alert-danger error-account" role="alert"></div>
+                </div>
+                <div class="login">
+                    <input type="text" id="emailLoginForm" name="emailLoginForm" placeholder="Email" required="required" />
+                    <input type="password" id="passwordlLoginForm" name="passwordlLoginForm" placeholder="Password" required="required" />
+                    <button type="click" class="btn btn-primary btn-block btn-large click-to-login-account">Let me in.</button>
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /SECTION -->
+
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <!-- top footer -->
+        <div class="section">
+            <!-- container -->
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        <div class="footer">
+                            <h3 class="footer-title">About The Project</h3>
+                            <p class="description-text">The project consists in a Testing and Software Quality Assurance
+                                application which intendes to facilitate the managing of shopping lists.</p>
+                            <br>
+                            <ul class="footer-links">
+                                <li><i class="fa fa-university"></i>Universidade de Aveiro, Teste e Qualidade de
+                                    Software</li>
+                                <li><i class="fa fa-black-tie"></i>Prof. Ilídio Oliveira, Prof. Cláudio Teixeira</li>
+                                <li><i class="fa fa-graduation-cap"></i>João Fidalgo, jfidalg@gmail.com</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-4 col-sm-2"></div>
+                    <div class="col-12 col-sm-4">
+                        <div class="footer">
+                            <h3 class="footer-title">Functionalities</h3>
+                            <ul class="footer-links">
+                                <li><a href="#">Account</a></li>
+                                <li><a href="./index.html">Products</a></li>
+                                <li><a href="#">Lists</a></li>
+                                <li><a href="#">Favorites</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /row -->
+            </div>
+            <!-- /container -->
+        </div>
+        <!-- /top footer -->
+
+        <!-- bottom footer -->
+        <div id="bottom-footer" class="section">
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <span class="copyright">
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> All rights reserved | This
+                            template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a
+                                href="https://colorlib.com" target="_blank">Colorlib</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </span>
+                    </div>
+                </div>
+                <!-- /row -->
+            </div>
+            <!-- /container -->
+        </div>
+        <!-- /bottom footer -->
+    </footer>
+    <!-- /FOOTER -->
+
+    <!-- jQuery Plugins -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/nouislider.min.js"></script>
+    <script src="js/jquery.zoom.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/mainJS.js"></script>
+    <script src="js/login.js"></script>
+</body>
+
+</html>

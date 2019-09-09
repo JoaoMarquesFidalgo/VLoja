@@ -85,7 +85,7 @@ public class UserRequests {
 		} catch (NoSuchElementException e) {
 			apiResponse = utils.setMessage(true, 2005, "User does not exist", null);
 		} catch (DataIntegrityViolationException ex) {
-	    	apiResponse = utils.setMessage(true, 2006, ex.getMessage(), null);
+	    	apiResponse = utils.setMessage(true, 2006, "Email already used", null);
 	    }
 		return apiResponse;
 	}

@@ -1,0 +1,47 @@
+[
+    {
+        "category_name": "Food and Beverage",
+        "brands":
+        [
+            {
+                "brand_name": "Prozis"
+            },
+            {
+                "brand_name": "Wine to Eat"
+            },
+            {
+                "brand_name": "D'Avô"
+            }
+        ]
+    },
+    {
+        "category_name": "Books",
+        "brands":
+        [
+            {
+                "brand_name": "Civilização Editora"
+            },
+            {
+                "brand_name": "SA&V"
+            },
+            {
+                "brand_name": "Porto Editora"
+            }
+        ]
+    },
+    {
+        "category_name": "Telecommunications and Computing",
+        "brands":
+        [
+            {
+                "brand_name": "CoderHat"
+            },
+            {
+                "brand_name": "CloudPT"
+            },
+            {
+                "brand_name": "Bright"
+            }
+        ]
+    }
+]

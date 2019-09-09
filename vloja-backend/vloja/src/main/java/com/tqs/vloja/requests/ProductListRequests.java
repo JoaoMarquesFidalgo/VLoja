@@ -110,11 +110,13 @@ public class ProductListRequests {
 			ProductList productListDb = productListRepository.findById(productListId).get();
 			List_ listDb = listRepository.findById(listId).get();
 			if (utils.checkUser(listDb.getUserId(), userId)) {
+				/*
 				if (productListRepository.findByProductIdAndListId(productList.getProduct(), 
 						listId) != null) {
 					apiResponse = utils.setMessage(true, 2412, "Product already registed for this list", null);
 					return apiResponse;
 				}
+				*/
 				productListDb.setProduct(productList.getProduct());
 				productListDb.setList(productList.getList());
 				productListDb.setWasBought(productList.getWasBought());

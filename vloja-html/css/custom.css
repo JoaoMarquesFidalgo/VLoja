@@ -1,0 +1,26 @@
+/*
+    index.html
+*/
+
+.description-text {
+	word-wrap: break-word;
+}
+
+.dropdown-menu-custom {
+    max-width: 150px !important; 
+}
+
+/*
+    register.html
+*/
+
+.radio-button-normal-dimensions {
+    width: 12px !important; 
+    height: 12px !important;
+}
+
+.feedback {
+    min-width: 320px;
+    max-width: 600px;
+    margin: auto;
+}
