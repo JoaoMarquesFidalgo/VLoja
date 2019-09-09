@@ -42,7 +42,7 @@ public class AuthenticationRequests {
 			apiResponse = utils.setMessage(false, 1401, "User create with sucess", user);
 	    }
 	    catch (DataIntegrityViolationException e) {
-	    	apiResponse = utils.setMessage(true, 2401, e.getMessage(), null);
+	    	apiResponse = utils.setMessage(true, 2401, "Email already used", null);
 	    }
 		return apiResponse;
 	}

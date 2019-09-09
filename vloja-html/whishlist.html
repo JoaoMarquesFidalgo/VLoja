@@ -32,6 +32,9 @@
 
     <link type="text/css" rel="stylesheet" href="css/form.css" />
 
+    <link rel="stylesheet" href="css/jquery-ui.css">
+
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -69,13 +72,12 @@
                         <div class="header-ctn">
                             <!-- Whishlist -->
                             <div>
-                                <a href="whishlist.html" style="width: 100px !important">
+                                <a href="whishlist.html" style="width: 100px !important" style="width: 100px !important">
                                     <i class="fa fa-heart-o"></i>
                                     <span>Your Whishlists</span>
                                 </a>
                             </div>
                             <!-- /Whishlist -->
-
 
                             <!-- Manage account -->
                             <div class="dropdown">
@@ -117,8 +119,8 @@
             <div id="responsive-nav">
                 <!-- NAV -->
                 <ul class="main-nav nav navbar-nav">
-                    <li class="active"><a href="#">Products</a></li>
-                    <li><a href="whishlist.html">Whishlists</a></li>
+                    <li><a href="index.html">Products</a></li>
+                    <li class="active"><a href="whishlist.html">Whishlists</a></li>
                     <li><a href="#">Favorites</a></li>
                 </ul>
                 <!-- /NAV -->
@@ -129,6 +131,35 @@
     </nav>
     <!-- /NAVIGATION -->
 
+    <!-- BREADCRUMB -->
+    <div id="breadcrumb" class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h3 class="breadcrumb-header">Whishlist</h3>
+                        <ul class="breadcrumb-tree">
+                            <li><a href="./index.html">Home</a></li>
+                            <li class="active">Whishlist</li>
+                        </ul>
+
+                        <div class="section-nav">
+                            <ul class="section-tab-nav tab-nav">
+                                <li><a href="./index.html">See Whishlists</a></li>
+                                <li class="user-logged"><a href="#" data-toggle="modal"
+                                        data-target="#addWhishlistModal">Add Whishlist</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /BREADCRUMB -->
 
     <!-- SECTION -->
     <div class="section">
@@ -137,25 +168,10 @@
             <!-- row -->
             <div class="row">
                 <div class="feedback">
-                    <div class="alert alert-success success-product" role="alert"></div>
-                    <div class="alert alert-danger error-product" role="alert"></div>
+                    <div class="alert alert-success success-whishlist" role="alert"></div>
+                    <div class="alert alert-danger error-whishlist" role="alert"></div>
                 </div>
-                <!-- section title -->
-                <div class="col-md-12">
-                    <div class="section-title">
-                        <h3 class="title">Products</h3>
-                        <div class="section-nav">
-                            <ul class="section-tab-nav tab-nav">
-                                <li><a href="./index.html">See Products</a></li>
-                                <li class="user-logged"><a href="#" data-toggle="modal"
-                                        data-target="#addProductModal">Add Product</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- /section title -->
-
-                <!-- Products tab & slick -->
+                <!-- Whishlist tab & slick -->
                 <div class="col-md-12">
                     <div class="row">
                         <div class="products-tabs">
@@ -170,7 +186,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Products tab & slick -->
+                <!-- Whishlist tab & slick -->
             </div>
             <!-- /row -->
         </div>
@@ -244,142 +260,119 @@
     </footer>
     <!-- /FOOTER -->
 
-    <!-- Add Product Modal -->
-    <div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <!-- Add Whishlist Modal -->
+    <div class="modal fade" id="addWhishlistModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Add Product</h4>
+                    <h4 class="modal-title" id="myModalLabel">Add Whishlist</h4>
                 </div>
                 <div class="modal-body">
                     <div id="imageToPut"></div>
                     <div class="login">
-                        <div class="alert alert-danger error-product" role="alert"></div>
-                        <input type="text" id="nameAddProductForm" name="nameAddProductForm"
-                            placeholder="Name of Product" required="required" />
-                        <input type="number" id="priceAddProductForm" name="priceAddProductForm"
-                            placeholder="Price of Product" min=0 required="required" />
-                        <!-- Category -->
-                        <select id="categoryAddProduct" name="categoryAddProduct">
-                            <option value="">Category</option>
-                        </select>
-                        <!-- Category -->
-                        <p></p>
-                        <!-- Brand -->
-                        <select id="brandAddProduct" name="brandAddProduct" disabled>
-                            <option value="">Brand</option>
-                        </select>
-                        <!-- Brand -->
-                        <p></p>
-                        <input type="file" id="imageAddProductForm" name="imageAddProductForm" placeholder="Image"
-                            required="required" />
+                        <div class="alert alert-danger error-whishlist" role="alert"></div>
+                        <input type="text" id="aliasAddWhishlistForm" name="aliasAddWhishlistForm"
+                            placeholder="Alias of Whishlist" required="required" />
+                        <input type="text" id="categoryAddWhishlistForm" name="categoryAddWhishlistForm"
+                            placeholder="Category of Whishlist" min=0 required="required" />
+                        <input type="text" id="datepickerAddWhishlistForm" placeholder="Date of Whishlist"
+                            required="required">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary click-to-add-product">Save</button>
+                    <button type="button" class="btn btn-primary click-to-add-whishlist">Save</button>
                     <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Add Product Modal -->
+    <!-- Add Whishlist Modal -->
 
 
-    <!-- Edit Product Modal -->
-    <div class="modal fade" id="editProductModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <!-- Edit Whishlist Modal -->
+    <div class="modal fade" id="editWhishlistModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Edit Product</h4>
+                    <h4 class="modal-title" id="myModalLabel">Edit Whishlist</h4>
                 </div>
                 <div class="modal-body">
                     <div id="imageToPut"></div>
                     <div class="login">
-                        <div class="alert alert-danger error-product" role="alert"></div>
-                        <input type="text" id="nameEditProductForm" name="nameEditProductForm"
-                            placeholder="Name of Product" required="required" />
-                        <input type="number" id="priceEditProductForm" name="priceEditProductForm"
-                            placeholder="Price of Product" min=0 required="required" />
-                        <!-- Category -->
-                        <select id="categoryEditProduct" name="categoryEditProduct">
-                            <option value="">Category</option>
-                        </select>
-                        <!-- Category -->
-                        <p></p>
-                        <!-- Brand -->
-                        <select id="brandEditProduct" name="brandEditProduct" disabled>
-                            <option value="">Brand</option>
-                        </select>
-                        <!-- Brand -->
-                        <p></p>
-                        <input type="file" id="imageEditProductForm" name="imageEditProductForm" placeholder="Image"
-                            required="required" />
+                        <div class="alert alert-danger error-whishlist" role="alert"></div>
+                        <input type="text" id="aliasEditWhishlistForm" name="aliasEditWhishlistForm"
+                            placeholder="Alias of Whishlist" required="required" />
+                        <input type="text" id="categoryEditWhishlistForm" name="categoryEditWhishlistForm"
+                            placeholder="Category of Whishlist" min=0 required="required" />
+                        <input type="text" id="datepickerEditWhishlistForm" placeholder="Date of Whishlist"
+                            required="required">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary click-to-edit-product">Save</button>
+                    <button type="button" class="btn btn-primary click-to-edit-whishlist">Save</button>
                     <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Edit Product Modal -->
+    <!-- Edit Whishlist Modal -->
 
-    <!-- Delete Product Modal -->
-    <div class="modal fade" id="deleteProductModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <!-- Delete Whishlist Modal -->
+    <div class="modal fade" id="deleteWhishlistModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Delete Product</h4>
+                    <h4 class="modal-title" id="myModalLabel">Delete Whishlist</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="alert alert-danger" role="alert">Are you sure to remove this product?</div>
+                    <div class="alert alert-danger" role="alert">Are you sure to remove this whishlist?</div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary click-to-delete-product">Delete</button>
+                    <button type="button" class="btn btn-primary click-to-delete-whishlist">Delete</button>
                     <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Edit Product Modal -->
+    <!-- Delete Whishlist Modal -->
 
-    <!-- Add to whishlist Model -->
-    <div class="modal fade" id="addToWhislist" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Add to Whishlist</h4>
-                </div>
-                <div class="modal-body">
-                    <div id="fill-whishlist"></div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary click-to-add-to-whishlist">Save</button>
-                    <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+    <!-- Show whishlist products Modal -->
+    <div class="modal fade" id="productsWhishlistModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Whishlist Products</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="fill-products"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary click-to-change-products-whishlist">Save</button>
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Edit Product Modal -->
+        <!-- Delete Whishlist Modal -->
 
     <!-- jQuery Plugins -->
     <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/slick.min.js"></script>
     <script src="js/nouislider.min.js"></script>
     <script src="js/jquery.zoom.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/mainJS.js"></script>
-    <script src="js/product.js"></script>
+    <script src="js/whishlist.js"></script>
 </body>
 
 </html>
