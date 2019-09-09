@@ -229,7 +229,7 @@ $(document).ready(function () {
                 fillEditModal(product);
             }
         } else {
-            showEditProductErrorMessage("Login to edit products");
+            showEditProductErrorMessage("Login to edit products", e);
         }
     });
 
@@ -346,7 +346,7 @@ $(document).ready(function () {
                 showEditProductErrorMessage("No rights to delete this product", e);
             }
         } else {
-            showEditProductErrorMessage("Login to delete products");
+            showEditProductErrorMessage("Login to delete products", e);
         }
     });
 
@@ -382,7 +382,11 @@ $(document).ready(function () {
         const productId = $(e.relatedTarget).data('product-id');
         // Checks if user is logged
         const user = userInfo;
-        getWhishlists(productId, user);
+        if (user) {
+            getWhishlists(productId, user);
+        } else {
+            showEditProductErrorMessage("Login to add products to whishlists", e);
+        }
     });
 
     function getWhishlists(productId, user) {
